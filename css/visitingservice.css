@@ -176,6 +176,7 @@ footer {
     header .container {
         flex-direction: column;
     }
+    
 
     nav ul {
         margin-top: 15px;
