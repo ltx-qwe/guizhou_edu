@@ -1,0 +1,9 @@
+index.html==首页
+profile.html==本馆简介
+exhibition.html==展厅布局
+visiting.html==参观须知===>没有门票
+
+visitingservice.html==团队预约
+xqin.html==先秦时期
+qinhan.html==秦汉时期
+stsy.html==隋唐宋元时期
