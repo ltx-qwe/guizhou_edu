@@ -11,15 +11,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
-    // 展厅标记点击事件
-    document.querySelectorAll('.exhibit-marker').forEach(marker => {
-        marker.addEventListener('click', function() {
-            const exhibitId = this.getAttribute('data-exhibit');
-            const exhibitItem = document.getElementById(exhibitId);
-            if (exhibitItem) {
-                exhibitItem.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
 });
