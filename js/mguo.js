@@ -22,11 +22,17 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// 平滑滚动效果
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+
+ // 平滑滚动到锚点
+ document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+            top: targetElement.offsetTop,
             behavior: 'smooth'
         });
     });
