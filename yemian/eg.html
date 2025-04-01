@@ -3,205 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>贵州教育史馆 - 民国教育对比</title>
+    <title>民国时期的贵州教育</title>
     <style>
-        :root {
-            --warlord-color: #8e44ad;
-            --kmt-color: #3498db;
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            font-family: "Microsoft YaHei", sans-serif;
         }
-
+        
         body {
-            background: #f8f9fa;
-            color: var(--text-dark);
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
         }
-
-        /* 分屏容器 */
-        .split-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 100vh;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 30px;
             position: relative;
+            overflow: hidden;
         }
-
-        /* 军阀时期板块 */
-        .warlord-era {
-            background: linear-gradient(45deg, rgba(142, 68, 173, 0.95), rgba(108, 52, 131, 0.95)),
-                        url('https://example.com/warlord-bg.jpg') center/cover;
-            color: var(--text-light);
-            padding: 60px;
-            position: relative;
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
         }
-
-        /* 国民党时期板块 */
-        .kmt-era {
-            background: linear-gradient(45deg, rgba(52, 152, 219, 0.95), rgba(41, 128, 185, 0.95)),
-                        url('https://example.com/kmt-bg.jpg') center/cover;
-            color: var(--text-light);
-            padding: 60px;
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s 0.3s forwards;
         }
-
-        /* 时间线装饰 */
-        .timeline-divider {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--warlord-color), var(--kmt-color));
-            transform: translateX(-50%);
-            z-index: 2;
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        /* 内容卡片 */
-        .era-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
+        
+        .section {
+            background-color: white;
+            border-radius: 8px;
             padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.5s;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .era-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card-header {
+        
+        h2 {
+            color: #2c3e50;
             margin-bottom: 20px;
-            border-left: 4px solid;
-            padding-left: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            text-align: center;
         }
-
-        .warlord-era .card-header {
-            border-color: var(--warlord-color);
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            animation: fadeIn 1s forwards;
         }
-
-        .kmt-era .card-header {
-            border-color: var(--kmt-color);
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
-
-        /* 时间标记 */
-        .time-marker {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
+        
+        .image-gallery {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
             justify-content: center;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .split-container {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-divider {
-                display: none;
-            }
+        
+        .image-item {
+            flex: 1 1 300px;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-caption {
+            padding: 10px;
+            background-color: #f8f9fa;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-    <div class="split-container">
-        <div class="timeline-divider"></div>
-
-        <!-- 军阀时期 -->
-        <section class="warlord-era">
-            <div class="time-marker" style="top: 20%; left: -25px">1912</div>
-            <div class="era-card">
-                <div class="card-header">
-                    <h2>军阀统治时期</h2>
-                    <p>1912-1935 · 动荡中的教育萌芽</p>
+    <div class="hero">
+        <div class="container">
+            <h1>民国时期的贵州教育</h1>
+            <p>探索贵州教育的近代化历程</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <section class="section">
+            <h2>地方军阀统治下的贵州教育（1912-1935）</h2>
+            <p>在地方军阀统治时期，贵州教育经历了曲折的发展。军阀混战导致教育行政机构频繁变动，教育事业缺乏统一管理，发展缓慢。然而，这一时期也取得了一些成就，为贵州教育的近代化奠定了基础。</p>
+            
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://via.placeholder.com/400x250?text=军阀时期的贵州课堂" alt="军阀时期的贵州课堂">
+                    <div class="image-caption">军阀时期的贵州课堂</div>
                 </div>
-                <div class="card-content">
-                    <img src="https://example.com/warlord-school.jpg" alt="军阀时期学校" class="card-image">
-                    <ul class="era-features">
-                        <li>🔸 教育经费严重不足</li>
-                        <li>🔸 新式学校与传统私塾并存</li>
-                        <li>🔸 周西成主政时期短暂发展</li>
-                    </ul>
+                <div class="image-item">
+                    <img src="https://via.placeholder.com/400x250?text=贵州大学创办" alt="贵州大学创办">
+                    <div class="image-caption">贵州大学创办</div>
                 </div>
             </div>
-
-            <div class="time-marker" style="top: 50%; left: -25px">1927</div>
-            <div class="era-card">
-                <h3>重要事件</h3>
-                <p>1927年周西成创办贵州大学，成为贵州近代高等教育的重要尝试...</p>
-            </div>
+            
+            <p>兴义系军阀统治期间，贵州教育行政机构兴废无常，教育事业缺乏管理，军费开支严重影响了教育发展。然而，桐梓系军阀周西成上台后，通过建立贵州省教育厅、创办贵州大学、发展中小学教育等措施，推动了贵州教育的近代化。1928年，贵州大学成立，为贵州高等教育的发展奠定了基础。[^31^]</p>
         </section>
-
-        <!-- 国民党时期 -->
-        <section class="kmt-era">
-            <div class="time-marker" style="top: 30%; right: -25px">1935</div>
-            <div class="era-card">
-                <div class="card-header">
-                    <h2>国民党统治时期</h2>
-                    <p>1935-1949 · 体系化教育建设</p>
+        
+        <section class="section">
+            <h2>国民党统治下的贵州教育（1935-1949）</h2>
+            <p>1935年，国民党统治贵州后，教育事业得到了进一步发展。在这一时期，贵州的教育体制逐步完善，教育普及率提高，教育质量显著提升。</p>
+            
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://via.placeholder.com/400x250?text=国民党时期的贵州学校" alt="国民党时期的贵州学校">
+                    <div class="image-caption">国民党时期的贵州学校</div>
                 </div>
-                <div class="card-content">
-                    <img src="https://example.com/kmt-school.jpg" alt="国民党时期学校" class="card-image">
-                    <ul class="era-features">
-                        <li>🔹 建立完整教育行政体系</li>
-                        <li>🔹 抗战时期高校内迁热潮</li>
-                        <li>🔹 国立贵州大学成立</li>
-                    </ul>
+                <div class="image-item">
+                    <img src="https://via.placeholder.com/400x250?text=贵州民众教育馆" alt="贵州民众教育馆">
+                    <div class="image-caption">贵州民众教育馆</div>
                 </div>
             </div>
-
-            <div class="time-marker" style="top: 70%; right: -25px">1941</div>
-            <div class="era-card">
-                <h3>教育里程碑</h3>
-                <p>1941年国立贵州大学成立，设文理、法商、农工三学院...</p>
-            </div>
+            
+            <p>国民党统治时期，贵州教育在普及文化知识、改善民众生活质量、增强抗战意识等方面发挥了重要作用。1935年至1949年，贵州的民众教育馆先后进行了多项社会活动，推动了贵州教育的现代化进程。这一时期，贵州的中小学教育得到了进一步发展，教育普及率显著提高，为贵州的社会进步和经济发展提供了重要支持。[^29^]</p>
         </section>
     </div>
-
-    <script>
-        // 视差滚动效果
-        window.addEventListener('scroll', () => {
-            const warlord = document.querySelector('.warlord-era');
-            const kmt = document.querySelector('.kmt-era');
-            const scrolled = window.pageYOffset;
-
-            warlord.style.transform = `translateY(${scrolled * 0.2}px)`;
-            kmt.style.transform = `translateY(${scrolled * -0.2}px)`;
-        });
-
-        // 卡片交互动画
-        document.querySelectorAll('.era-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.transform = `
-                    perspective(1000px)
-                    rotateX(${(y - rect.height/2) / 15}deg)
-                    rotateY(${-(x - rect.width/2) / 15}deg)
-                `;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-            });
-        });
-    </script>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 贵州教育史馆 版权所有</p>
+        </div>
+    </footer>
 </body>
 </html>
