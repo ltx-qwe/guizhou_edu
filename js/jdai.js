@@ -1,29 +1,45 @@
-// 图片轮播效果
+// 页面滚动动画
 document.addEventListener('DOMContentLoaded', function() {
-    const galleryItems = document.querySelectorAll('.gallery-item');
+    // 观察器配置
+    const observerOptions = {
+        threshold: 0.1
+    };
     
-    galleryItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.querySelector('.gallery-caption').style.transform = 'translateY(0)';
+    // 观察器回调
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                observer.unobserve(entry.target);
+            }
         });
+    };
+    
+    // 创建观察器
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    
+    // 观察所有需要动画的元素
+    document.querySelectorAll('.content-section, .timeline-item, .history-card, .column').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease-out';
+        observer.observe(el);
         
-        item.addEventListener('mouseleave', function() {
-            this.querySelector('.gallery-caption').style.transform = 'translateY(100%)';
-        });
+        el.classList.add('animated');
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
     });
-
-    // 平滑滚动效果
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
+    
+    // 了解更多按钮功能
+    document.querySelectorAll('.read-more').forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const targetSection = document.getElementById(targetId);
+            
+            window.scrollTo({
+                top: targetSection.offsetTop - 80,
                 behavior: 'smooth'
             });
         });
-    });
-
-    // 页面加载动画
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
     });
 });
